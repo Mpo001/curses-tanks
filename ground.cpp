@@ -1,4 +1,4 @@
-#if defined(WIN32)
+#if defined(_WIN32)
 #include "curses.h"
 #else
 #include <curses.h>

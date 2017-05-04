@@ -5,7 +5,7 @@
 #include <ctime>
 #include <cmath>
 
-#if defined(WIN32)
+#if defined(_WIN32)
 #include <Windows.h>
 #include "curses.h"
 #else
@@ -48,7 +48,7 @@ void DrawBorder(int score, time_t st)
 {
 	border(0, 0, 0, 0, 0, 0, 0, 0);
 	stringstream ss;
-	ss << " Score: " << setw(4) << score << " ";
+	ss << " Score:  " << setfill('0') << setw(4) << score << " ";
 	move(0, 2);
 	addstr(ss.str().c_str());
 
@@ -57,10 +57,22 @@ void DrawBorder(int score, time_t st)
 	int minutes = dT / 60 % 60;
 	int hours = dT / 3600 % 24;
 
+	// this timer updates with the the touch of the the key board not continous 
 	ss = stringstream();
-	ss << " Time: " << setfill('0') << setw(2) << hours << ":" << setw(2) << minutes << ":" << setw(2) << seconds << " ";
-	move(0, COLS - 20);
+	ss << "WELCOME PLAYERS TO TANKS!!!";
+	//ss << " Time: " << setfill('0') << setw(2) << hours << ":" << setw(2) << minutes << ":" << setw(2) << seconds << " ";
+	move(0, (COLS/2 - 23));
 	addstr(ss.str().c_str());
+	
+	
+	
+
+	ss = stringstream();
+	ss << " Score:  " << setfill('0') << setw(4) << score << " ";
+	move(0, COLS - 19);
+	addstr(ss.str().c_str());
+
+
 }
 //http://www.iforce2d.net/b2dtut/projected-trajectory
 
@@ -69,11 +81,11 @@ void Shoot(Ground & g, Player * players, int turn)
 	double angle = players[turn].angle / 180.0 * PI;
 	double y_component = sin(angle) * players[turn].power * 0.2;
 	double x_component = cos(angle) * players[turn].power * 0.2;
-	
+
 	double pNx;
 	double pNy;
 	double time_divisor = 15.0;
-	
+
 	if (players[turn].s == RIGHT)
 		x_component = -x_component;
 
@@ -94,8 +106,8 @@ void Shoot(Ground & g, Player * players, int turn)
 			MySleep(50);
 			continue;
 		}
-	//	if (pNy >= LINES - 2)
-	//		break;
+		//	if (pNy >= LINES - 2)
+		//		break;
 		if (pNy > g.ground.at((int)pNx))
 			break;
 
@@ -111,13 +123,11 @@ int main(int argc, char * argv[])
 	srand((unsigned int)time(nullptr));
 
 	int turn = 0;
-	bool keep_going = true;
 	time_t start_time;
+	int score = 0;
 	Ground g;
 	Player players[2];
-	int score = 0;
-	start_time = time(nullptr);
-
+	bool keep_going = true;
 
 	initscr();
 	noecho();
@@ -126,11 +136,14 @@ int main(int argc, char * argv[])
 	g.InitializeGround();
 	players[0].Initialize(rand() % (COLS / 4), LEFT);
 	players[1].Initialize(rand() % (COLS / 4) + 3 * COLS / 4 - 2, RIGHT);
-
+	start_time = time(nullptr);
 	DrawScreen(g, players, turn);
+	
+	
 	while (keep_going)
 	{
 		DrawBorder(score, start_time);
+
 		bool show_char = false;
 		int c = getch();
 		switch (c)
@@ -176,7 +189,9 @@ int main(int argc, char * argv[])
 			addstr(ss.str().c_str());
 			refresh();
 		}
+		
 	}
+	
 	erase();
 	addstr("Hit any key to exit");
 	refresh();
