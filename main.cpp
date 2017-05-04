@@ -44,6 +44,24 @@ void DrawScreen(Ground & g, Player * players, int turn)
 	refresh();
 }
 
+void DrawBorder(int score, time_t st)
+{
+	border(0, 0, 0, 0, 0, 0, 0, 0);
+	stringstream ss;
+	ss << " Score: " << setw(4) << score << " ";
+	move(0, 2);
+	addstr(ss.str().c_str());
+
+	int dT = static_cast<int>(difftime(time(nullptr), st));
+	int seconds = dT % 60;
+	int minutes = dT / 60 % 60;
+	int hours = dT / 3600 % 24;
+
+	ss = stringstream();
+	ss << " Time: " << setfill('0') << setw(2) << hours << ":" << setw(2) << minutes << ":" << setw(2) << seconds << " ";
+	move(0, COLS - 20);
+	addstr(ss.str().c_str());
+}
 //http://www.iforce2d.net/b2dtut/projected-trajectory
 
 void Shoot(Ground & g, Player * players, int turn)
@@ -94,8 +112,12 @@ int main(int argc, char * argv[])
 
 	int turn = 0;
 	bool keep_going = true;
+	time_t start_time;
 	Ground g;
 	Player players[2];
+	int score = 0;
+	start_time = time(nullptr);
+
 
 	initscr();
 	noecho();
@@ -108,6 +130,7 @@ int main(int argc, char * argv[])
 	DrawScreen(g, players, turn);
 	while (keep_going)
 	{
+		DrawBorder(score, start_time);
 		bool show_char = false;
 		int c = getch();
 		switch (c)
