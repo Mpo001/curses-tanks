@@ -5,7 +5,6 @@
 #include <ctime>
 #include <cmath>
 
-
 #if defined(_WIN32)
 #include <Windows.h>
 #include "curses.h"
@@ -82,14 +81,9 @@ void Shoot(Ground & g, Player * players, int turn)
 	double angle = players[turn].angle / 180.0 * PI;
 	double y_component = sin(angle) * players[turn].power * 0.2;
 	double x_component = cos(angle) * players[turn].power * 0.2;
-    
-   // Vec2D force(sin(angle) * players[turn].power * 0.2, cos(angle) * players[turn].power * 0.2);
 
 	double pNx;
 	double pNy;
-    
-    //Vect2D(pNx, pNy);
-    
 	double time_divisor = 15.0;
 
 	if (players[turn].s == RIGHT)

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B51EA7F61EC12E8E00DA70B7 /* Vec2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B51EA7F41EC12E8E00DA70B7 /* Vec2D.cpp */; };
 		B5795F461EB91A2F008B53F3 /* Vect2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795F441EB91A2F008B53F3 /* Vect2D.cpp */; };
 		C0472D4A1EB2AEB00045A747 /* ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0472D451EB2AEB00045A747 /* ground.cpp */; };
 		C0472D4B1EB2AEB00045A747 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0472D471EB2AEB00045A747 /* main.cpp */; };
@@ -30,8 +29,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B51EA7F41EC12E8E00DA70B7 /* Vec2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vec2D.cpp; sourceTree = "<group>"; };
-		B51EA7F51EC12E8E00DA70B7 /* Vec2D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vec2D.hpp; sourceTree = "<group>"; };
 		B5795F441EB91A2F008B53F3 /* Vect2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vect2D.cpp; sourceTree = "<group>"; };
 		B5795F451EB91A2F008B53F3 /* Vect2D.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vect2D.hpp; sourceTree = "<group>"; };
 		C0472D3A1EB2AE3A0045A747 /* curses-tanks-m */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "curses-tanks-m"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,8 +75,6 @@
 				C0472D451EB2AEB00045A747 /* ground.cpp */,
 				C0472D461EB2AEB00045A747 /* ground.hpp */,
 				C0472D471EB2AEB00045A747 /* main.cpp */,
-				B51EA7F41EC12E8E00DA70B7 /* Vec2D.cpp */,
-				B51EA7F51EC12E8E00DA70B7 /* Vec2D.hpp */,
 				B5795F441EB91A2F008B53F3 /* Vect2D.cpp */,
 				B5795F451EB91A2F008B53F3 /* Vect2D.hpp */,
 				C0472D481EB2AEB00045A747 /* player.cpp */,
@@ -157,7 +152,6 @@
 				C0472D4A1EB2AEB00045A747 /* ground.cpp in Sources */,
 				C0472D4C1EB2AEB00045A747 /* player.cpp in Sources */,
 				B5795F461EB91A2F008B53F3 /* Vect2D.cpp in Sources */,
-				B51EA7F61EC12E8E00DA70B7 /* Vec2D.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

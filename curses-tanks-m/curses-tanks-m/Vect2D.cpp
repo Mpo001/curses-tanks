@@ -7,11 +7,3 @@
 //
 
 #include "Vect2D.hpp"
-
-Vect2D :: Vect2D(double line, double column)
-{
-    y = line;
-    x = column;
-}
-
-

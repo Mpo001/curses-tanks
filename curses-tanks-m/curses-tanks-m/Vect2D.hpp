@@ -12,10 +12,8 @@
 #include <stdio.h>
 
 #endif /* Vect2D_hpp */
-class Vect2D
+class Vec2D
 {
     double x;
     double y;
-    Vect2D(double line, double column);
-    
 };
