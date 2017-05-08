@@ -6,9 +6,9 @@
 //  Copyright © 2017 Carthage College. All rights reserved.
 //
 
-#include "Vect2D.hpp"
+#include "Vec2D.hpp"
 
-Vect2D :: Vect2D(double line, double column)
+Vec2D :: Vec2D(double line, double column)
 {
     y = line;
     x = column;

@@ -6,16 +6,16 @@
 //  Copyright © 2017 Carthage College. All rights reserved.
 //
 
-#ifndef Vect2D_hpp
-#define Vect2D_hpp
+#ifndef Vec2D_hpp
+#define Vec2D_hpp
 
 #include <stdio.h>
 
-#endif /* Vect2D_hpp */
-class Vect2D
+#endif /* Vec2D_hpp */
+class Vec2D
 {
     double x;
     double y;
-    Vect2D(double line, double column);
+    Vec2D(double line, double column);
     
 };
