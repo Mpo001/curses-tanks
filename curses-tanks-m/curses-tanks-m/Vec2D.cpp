@@ -14,4 +14,3 @@ Vect2D :: Vect2D(double line, double column)
     x = column;
 }
 
-
