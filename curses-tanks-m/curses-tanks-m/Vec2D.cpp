@@ -14,3 +14,21 @@ Vec2D :: Vec2D(double line, double column)
     x = column;
 }
 
+Vec2D::Vec2D(double line, double column, double gravity)
+{
+    
+}
+
+void Vec2D::setX(double X)
+{
+    x = X;
+}
+
+double Vec2D::getX()
+{
+    return x;
+}
+
+
+
+
