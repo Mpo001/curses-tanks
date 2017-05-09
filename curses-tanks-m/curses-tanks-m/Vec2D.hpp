@@ -18,21 +18,30 @@ class Vec2D
 {
 public:
     Vec2D();
-    void p0(double l); //pos x
-    void p0y(double c); // pos y
-    void forceX(double x);
-    void forceY(double y);//force
-    void gravity(double a, double b); // grav
-    //void setX(double x);
-    //double getX();
-    void pNx(double X);
-    void pNy(double Y);
+    void setp0(int); //pos x
+    int getp0();
+    
+    void setforceX(double);
+    double getforceX();
+    
+    void setforceY(double);//force
+    double getforceY();
+    
+    void setpNx(double);
+    double  getpNx();
+    
+    void setpNy(double);
+    double getpNy();
+    
+    void setgravity(double);
+    double getGravity();
     
 private:
-    double l;
-    double c;
-    double a;
-    double b;
-    double x;
-    double y;
+    int cols, column;
+    double forx, fx;
+    double fory, fy;
+    double X , x, y , Y;
+    double grav;
 };
+
+

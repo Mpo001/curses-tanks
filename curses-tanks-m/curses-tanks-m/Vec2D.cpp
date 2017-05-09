@@ -13,73 +13,84 @@
 #include "player.hpp"
 #include <cmath>
 
-
-
-void Vec2D :: p0(double c)
+Vec2D :: Vec2D()
 {
-    c = Player().col;
-}
-//void Vec2D :: p0y(double line)
-//{
-//   line = Player().col;
-//}
-
-void Vec2D :: forceX(double forx)
-{
+    column = Player().col;
+    fory = cos(Player().angle * Player().power * 0.2);
     forx = sin(Player().angle * Player().power * 0.2);
-}
-void Vec2D :: forceY(double fory)
-{
-  fory = cos(Player().angle * Player().power * 0.2);
-}
-
-void Vec2D :: gravity( double a, double b)
-{
-    a = 0;
-    b = rand();
-    if( b < 1.1 || b > -0.98)
-        b = rand();
+    X = x;
+    Y = y;
+    grav = -0.98;
 }
 
-void Vec2D:: pNx(double X)
+void Vec2D :: setp0(int cols)
 {
-    p0(c);
-    forceX(x);
+    column = cols;
+}
+
+int Vec2D:: getp0()
+{
+    return cols;
+}
+
+void Vec2D :: setforceY(double fy)
+{
+    fory = fy;
     
+}
+double Vec2D :: getforceY()
+{
+    return fy;
+}
+
+void Vec2D :: setforceX(double fx)
+{
+    forx = fx;
+}
+
+double Vec2D :: getforceX()
+{
+    return fx;
+}
+
+
+
+void Vec2D:: setpNx(double x)
+{
     
-    if(Player().s == RIGHT)
-       p0((-(Player().col)));
     int i;
-    double  time_divder = 15.0;
-    double di = i / time_divder;
-        
-   X = ((int)(c) + di * x);
+    const int  time_divder = 15.0;
+    const int di = i / time_divder;
+    x = ((Player().col) + di * forx);
+    x = X;
+ 
 }
-
-void Vec2D:: pNy(double Y)
+double Vec2D :: getpNx()
 {
-    
-    p0(c);
-    forceY(y);
+    return X;
+}
+void Vec2D:: setpNy(double y)
+{
     int i;
-    double  time_divder = 15.0;
-    double di = i / time_divder;
-    Y = ( c + di * y + (di * di + di)* -9.8 / time_divder / 1.5);
-    
-
+    const int time_divder = 15.0;
+    const int di = i / time_divder;
+    y = ( Player().col + di * fory + (di * di + di)* -9.8 / time_divder / 1.5);
+    y = Y;
+}
+double Vec2D :: getpNy()
+{
+    return Y;
 }
 
-
-//void Vec2D::setX(double X)
-//{
-//    x = X;
-//}
-//
-//double Vec2D::getX()
-//{
-//    return x;
+void Vec2D:: setgravity(double ity)
+{
+    ity = grav;
 }
 
+double Vec2D:: getGravity()
+{
+    return grav;
 
+}
 
 

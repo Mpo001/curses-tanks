@@ -53,16 +53,12 @@ void DrawBorder(int score, time_t st)
 	move(0, 2);
 	addstr(ss.str().c_str());
 
-	int dT = static_cast<int>(difftime(time(nullptr), st));
-	int seconds = dT % 60;
-	int minutes = dT / 60 % 60;
-	int hours = dT / 3600 % 24;
+
 
 	// this timer updates with the the touch of the the key board not continous 
 	ss = stringstream();
 	ss << "WELCOME PLAYERS TO TANKS!!!";
-	//ss << " Time: " << setfill('0') << setw(2) << hours << ":" << setw(2) << minutes << ":" << setw(2) << seconds << " ";
-	move(0, (COLS/2 - 23));
+		move(0, (COLS/2 - 23));
 	addstr(ss.str().c_str());
 	
 	
@@ -79,18 +75,23 @@ void DrawBorder(int score, time_t st)
 
 void Shoot(Ground & g, Player * players, int turn)
 {
-    for (int i = 1; i < 5000; i++)
-	{
-        Vec2D p0();
-        Vec2D force();
-        Vec2D gravity(0, -0.98); // or a different value of your choosing.
-        Vec2D pN = p0 + di * force + (di * di + di) * 0.5 * gravity;
-
-		//move((int)pNy() - 1, (int)pNx() + 1);
-		addch('*');
-		refresh();
-		MySleep(50);
-	}
+    for(int i = 1; i < 5000; i++)
+    {
+        
+        
+        Vec2D().getp0();
+        //p0(line and column - depends on your code);
+       (Vec2D().getforceX());
+       (Vec2D().getforceY());
+        //force(sin(angle) * players[turn].power * 0.2, cos(angle) * players[turn].power * 0.2);
+      //  Vec2D().gravity(Vec2D().a, Vec2D().b);
+        //gravity(0, -0.98); // or a different value of your choosing.
+       // Vec2D();
+        //pN = p0 + di * force + (di * di + di) * 0.5 * gravity;
+ 
+    //    refresh();
+        MySleep(50); 
+    }
 }
 
 int main(int argc, char * argv[])
@@ -142,7 +143,7 @@ int main(int argc, char * argv[])
 		case 'd':
 			players[turn].AngleDown();
 			break;
-
+        
 		case 10:
 		case KEY_ENTER:
 #if defined(WIN32)
@@ -151,21 +152,23 @@ int main(int argc, char * argv[])
 			Shoot(g, players, turn);
 			turn = 1 - turn;
 			break;
+        
 
 		default:
 			show_char = true;
 			break;
 		}
 		DrawScreen(g, players, turn);
-		if (show_char) {
+		if (show_char)
+        {
 			move(0, 1);
 			stringstream ss;
 			ss << setw(4) << c << " ";
 			addstr(ss.str().c_str());
 			refresh();
 		}
-		
-	}
+    }
+	
 	
 	erase();
 	addstr("Hit any key to exit");
@@ -174,4 +177,5 @@ int main(int argc, char * argv[])
 	echo();
 	endwin();
 	return 0;
+    
 }
