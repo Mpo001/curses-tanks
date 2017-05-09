@@ -79,47 +79,14 @@ void DrawBorder(int score, time_t st)
 
 void Shoot(Ground & g, Player * players, int turn)
 {
-	double angle = players[turn].angle / 180.0 * PI;
-	double y_component = sin(angle) * players[turn].power * 0.2;
-	double x_component = cos(angle) * players[turn].power * 0.2;
-    
-   Vec2D force(sin(angle) * players[turn].power * 0.2, cos(angle) * players[turn].power * 0.2);
-    
-    
-
-	double pNx;
-	double pNy;
-    
-    //Vect2D(pNx, pNy);
-    
-	double time_divisor = 15.0;
-
-	if (players[turn].s == RIGHT)
-		x_component = -x_component;
-
-	double p0x = players[turn].col;
-	double p0y = g.ground.at(players[turn].col);
-	// higher ground numbers are lower altitudes (0 is first line, etc).
-	p0y = LINES - p0y;
-	for (int i = 1; i < 5000; i++)
+    for (int i = 1; i < 5000; i++)
 	{
-		double di = i / time_divisor;
+        Vec2D p0();
+        Vec2D force();
+        Vec2D gravity(0, -0.98); // or a different value of your choosing.
+        Vec2D pN = p0 + di * force + (di * di + di) * 0.5 * gravity;
 
-		pNx = (int)(p0x + di * x_component);
-		pNy = p0y + di * y_component + (di * di + di) * -9.8 / time_divisor / 1.5;
-		pNy = (int)(LINES - pNy);
-		if (pNx < 1 || pNx >= COLS - 2)
-			break;
-		if (pNy < 1) {
-			MySleep(50);
-			continue;
-		}
-		//	if (pNy >= LINES - 2)
-		//		break;
-		if (pNy > g.ground.at((int)pNx))
-			break;
-
-		move((int)pNy - 1, (int)pNx + 1);
+		//move((int)pNy() - 1, (int)pNx() + 1);
 		addch('*');
 		refresh();
 		MySleep(50);

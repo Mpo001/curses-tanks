@@ -12,16 +12,27 @@
 #include <stdio.h>
 
 #endif /* Vec2D_hpp */
+
+
 class Vec2D
 {
 public:
-    Vec2D(double line, double column);
-    Vec2D(double line, double column, double gravity);
-    void setX(double x);
-    double getX();
+    Vec2D();
+    void p0(double l); //pos x
+    void p0y(double c); // pos y
+    void forceX(double x);
+    void forceY(double y);//force
+    void gravity(double a, double b); // grav
+    //void setX(double x);
+    //double getX();
+    void pNx(double X);
+    void pNy(double Y);
     
 private:
+    double l;
+    double c;
+    double a;
+    double b;
     double x;
     double y;
-    
 };
