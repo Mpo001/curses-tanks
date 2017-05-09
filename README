@@ -1,0 +1,10 @@
+# Mack and Mike's Game of Tanks
+## Objective.
+The objective of this game is to try to beat your friends by shooting them with your tank. If you sucessfully do this then you win!
+# Instructions
+The controls are as follows:
+W: Increaces the power of the cannon.
+S: Decreaces the power of the cannon.
+A: Increaces the angle of the cannon.
+D: Decreaces the angle of the cannon.
+
