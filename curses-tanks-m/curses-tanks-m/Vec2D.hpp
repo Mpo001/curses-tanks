@@ -14,8 +14,14 @@
 #endif /* Vec2D_hpp */
 class Vec2D
 {
+public:
+    Vec2D(double line, double column);
+    Vec2D(double line, double column, double gravity);
+    void setX(double x);
+    double getX();
+    
+private:
     double x;
     double y;
-    Vec2D(double line, double column);
     
 };
