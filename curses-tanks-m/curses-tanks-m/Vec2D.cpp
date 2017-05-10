@@ -15,17 +15,24 @@
 
 Vec2D :: Vec2D()
 {
+    
     column = Player().col;
-    fory = cos(Player().angle * Player().power * 0.2);
-    forx = sin(Player().angle * Player().power * 0.2);
+    const double PI = 3.141592653589793238463;
+    double angle = Player().angle / 180 * PI * 0.2;
+    forx = cos(angle)* Player().power * 0.2;
+    fory = sin(angle) * Player().power * 0.2;
     X = x;
     Y = y;
     grav = -0.98;
+    
+    double i;
+    double time_div = 15.0;
+    DI = i / time_div;
 }
 
-void Vec2D :: setp0(int cols)
+void Vec2D :: setp0(int col)
 {
-    column = cols;
+    column = col;
 }
 
 int Vec2D:: getp0()
@@ -58,10 +65,10 @@ double Vec2D :: getforceX()
 void Vec2D:: setpNx(double x)
 {
     
-    int i;
-    const int  time_divder = 15.0;
-    const int di = i / time_divder;
-    x = ((Player().col) + di * forx);
+//    int i;
+//    const int;
+//    const int di = i / double time_divder;
+//    x = ((Player().col) + DI * forx);
     x = X;
  
 }
@@ -71,10 +78,8 @@ double Vec2D :: getpNx()
 }
 void Vec2D:: setpNy(double y)
 {
-    int i;
-    const int time_divder = 15.0;
-    const int di = i / time_divder;
-    y = ( Player().col + di * fory + (di * di + di)* -9.8 / time_divder / 1.5);
+    double time_div = 15.0;
+    y = ( Player().col + DI * fory + (DI * DI + DI)* -9.8 / time_div / 1.5);
     y = Y;
 }
 double Vec2D :: getpNy()
@@ -91,6 +96,15 @@ double Vec2D:: getGravity()
 {
     return grav;
 
+}
+
+void Vec2D:: setdi(double d)
+{
+    DI = d;
+}
+double Vec2D:: getdi()
+{
+    return DI;
 }
 
 

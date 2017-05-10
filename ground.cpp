@@ -13,7 +13,7 @@ int max_height_divisor = 2;
 void Ground::InitializeGround()
 {
 	int current_height = LINES - LINES / base_height_divisor;
-	//int maximum_height = lines / max_height_divisor;
+	//int maximum_height = LINES / max_height_divisor;
 
 	for (int i = 1; i < COLS - 1; i++) {
 		int h = current_height;
@@ -31,6 +31,8 @@ void Ground::InitializeGround()
 		ground.push_back(h);
 	}
 }
+
+//void Ground ::
 
 void Ground::Draw()
 {

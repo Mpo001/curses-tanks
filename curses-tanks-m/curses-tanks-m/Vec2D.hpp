@@ -36,12 +36,16 @@ public:
     void setgravity(double);
     double getGravity();
     
+    void setdi(double);
+    double getdi();
+    
 private:
     int cols, column;
     double forx, fx;
     double fory, fy;
     double X , x, y , Y;
     double grav;
+    double DI;
 };
 
 

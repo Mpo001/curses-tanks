@@ -23,7 +23,7 @@ using namespace std;
 extern int base_height_divisor;
 extern int max_height_divisor;
 
-const double PI = 3.141592653589793238463;
+//const double PI = 3.141592653589793238463;
 
 void MySleep(int milliseconds)
 {
@@ -73,23 +73,46 @@ void DrawBorder(int score, time_t st)
 }
 //http://www.iforce2d.net/b2dtut/projected-trajectory
 
+void force(double x, double y)
+{
+    x = Vec2D().getforceX() * 0.2;
+    y = Vec2D().getforceY() * 0.2;
+}
+
 void Shoot(Ground & g, Player * players, int turn)
 {
+   if(players[turn].s == RIGHT)
+       Vec2D().getforceX() &&  -(Vec2D().getforceX());
+    
+  
+    double time_div = 15.0;
+    double pnx, pny;
+    double p0x = Vec2D().getp0();
+    double p0y = g.ground.at(players[turn].col);
+    p0y = LINES - p0y;
+    
     for(int i = 1; i < 5000; i++)
     {
+       // double angle = players[turn].angle / 180.0 * PI;
         
+        pnx = (int)(p0x + Vec2D().getdi() * Vec2D().getforceX());
+        pny = (int)(p0y + Vec2D().getdi() * Vec2D().getforceY() + ((Vec2D().getdi() * Vec2D().getdi() + Vec2D().getdi())) * -9.8 / time_div / 1.5);
+        pny = (LINES - pny);
         
-        Vec2D().getp0();
-        //p0(line and column - depends on your code);
-       (Vec2D().getforceX());
-       (Vec2D().getforceY());
-        //force(sin(angle) * players[turn].power * 0.2, cos(angle) * players[turn].power * 0.2);
-      //  Vec2D().gravity(Vec2D().a, Vec2D().b);
-        //gravity(0, -0.98); // or a different value of your choosing.
-       // Vec2D();
-        //pN = p0 + di * force + (di * di + di) * 0.5 * gravity;
- 
-    //    refresh();
+        if (pnx < 1 || pnx >= COLS - 2)
+           break;
+        if (pnx == p0y )
+            //break;
+        if (pny < 1)
+        {
+            MySleep(10);
+            continue;
+        }
+        if (pny > g.ground.at((int)pnx))
+            break;
+        move((int)Vec2D().getpNy() - 1, (int)Vec2D().getpNx()+ 1);
+        addch('*');
+        refresh();
         MySleep(50); 
     }
 }
@@ -150,7 +173,7 @@ int main(int argc, char * argv[])
 		case PADENTER:
 #endif
 			Shoot(g, players, turn);
-			turn = 1 - turn;
+			turn = turn - 1;
 			break;
         
 
